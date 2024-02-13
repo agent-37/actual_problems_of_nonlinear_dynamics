@@ -66,7 +66,7 @@ def find_aswers(a, b):
         return cur
 
 
-a, b = map(int, input("Введите отрезок a,b\n").split())
+a, b = map(float, input("Введите отрезок a,b\n").split())
 res = find_aswers(a, b)
 for i in res:
     print(i)
