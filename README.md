@@ -13,7 +13,9 @@ f(x,c), a, b, alpha, beta
 ## Метод
 Для c=alpha запускаем алгоритм из Лаб 1а 
 c->c<sub>0</sub>+ dc
+
 x->x<sub>0</sub>-f'<sub>c</sub>(x<sub>0</sub>,c<sub>0</sub>)/f'<sub>x</sub>(x<sub>0</sub>,c<sub>0</sub>)
+
 Если |f'<sub>x</sub>(x<sub>0</sub>,c<sub>0</sub>)|<epsilon, то стоит вывести ошибку текстом
 # Лаба 1в
 ## Вход:
@@ -21,4 +23,8 @@ f(z), a
 ## Найти
 Построить все корни уравнения ограниченные квадратом размера a
 ## Метод
-Переберем все z<sub>0</sub>, для каждого сделаем итерационную последовательность z<sub>n+1</sub>=z<sub>n</sub>-f(z<sub>n</sub>)/f'(z<sub>n</sub>), пока не |z<sub>n+1</sub>-z<sub>n</sub>|<epsilon
+Переберем все z<sub>0</sub>, для каждого сделаем итерационную последовательность 
+
+z<sub>n+1</sub>=z<sub>n</sub>-f(z<sub>n</sub>)/f'(z<sub>n</sub>),
+
+пока не |z<sub>n+1</sub>-z<sub>n</sub>|<epsilon
