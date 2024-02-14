@@ -8,7 +8,7 @@ eps = 1e-8
 
 
 def func():
-    return cos(x - 1) *sin(x**2 )
+    return cos(x - 1) * (y + 1) ** 2
 
 
 def f(num, c):
@@ -24,11 +24,11 @@ def dfunc_dx():
 
 
 def df_x(num, c):
-    return  diff(cos(x - 1) *sin(x**2) , x).limit(y, c).limit(x, num)
+    return diff(cos(x - 1) * (y + 1) ** 2, x).limit(y, c).limit(x, num)
 
 
 def df_c(num, c):
-    return diff(cos(x - 1) *sin(x**2) , y).limit(y, c).limit(x, num)
+    return diff(cos(x - 1) * (y + 1) ** 2, y).limit(y, c).limit(x, num)
 
 
 def recurent_find(a, b, c):
@@ -114,6 +114,6 @@ def print_roots(matrix, a, dc):
 
 
 a, b, alpha, beta, dc = map(float, input("Введите отрезок a,b,alpha,beta, dc\n").split())
-print_roots(find_roots(a,b,alpha,beta,dc),a,dc)
+print_roots(find_roots(a, b, alpha, beta, dc), a, dc)
 # find_roots(a, b, alpha, beta, dc)
 # print(diff(cos(x - 1) * y ** 2, y).limit(y,2).limit(x,5))
