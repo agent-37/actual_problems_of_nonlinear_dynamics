@@ -1,6 +1,7 @@
 from cmath import cos
 from sympy import cos
 from sympy.abc import x
+import matplotlib.pyplot as plt
 
 eps = 1e-8
 
@@ -87,8 +88,52 @@ def gaus(matrix, b):
     return b
 
 
-n = int(input('Введите степень многочлена\n'))
+def find_max(dots):
+    m = dots[0][0]
+    for i in dots:
+        m = max(m, i[0])
+    return m
 
+
+def find_min(dots):
+    m = dots[0][0]
+    for i in dots:
+        m = min(m, i[0])
+    return m
+
+
+def func(poly, num):
+    e = 1
+    sum = 0
+    for i in range(len(poly) - 1, -1, -1):
+        sum += poly[i] * e
+        e *= num
+    return sum
+
+
+def print_dots(dots, poly):
+    ma = find_max(dots) + 0.1
+    mi = find_min(dots) - 0.1
+    y, p = [], []
+    N = 10000
+    for i in range(N):
+        y.append(mi + (ma - mi) * i / N)
+        p.append(func(poly, mi + (ma - mi) * i / N))
+    plt.plot(y, p)
+    for i in dots:
+        plt.plot(i[0], i[1], 'bo')
+    plt.show()
+
+
+def print_poly_console(poly):
+    for i in range(len(poly)):
+        if i != len(poly) - 1:
+            print(poly[i], 'x^', len(poly) - 1 - i, '+', sep='', end=' ')
+        else:
+            print(poly[i], 'x^', len(poly) - 1 - i, sep='', end=' ')
+
+
+n = int(input('Введите степень многочлена\n'))
 
 f_file = open("input.txt", 'r')
 
@@ -97,7 +142,6 @@ N = int(f_file.readline())
 dots = read_dots(f_file, N)
 b = find_b(dots, n + 1)
 matrix = find_matrix(dots, n + 1)
-print(matrix)
-print(b)
-poly = gaus(matrix,b)
-print(poly)
+poly = gaus(matrix, b)
+print_poly_console(poly)
+print_dots(dots, poly)
